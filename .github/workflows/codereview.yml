@@ -9,11 +9,14 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  test:
+  review:
     # if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
     runs-on: ubuntu-latest
     steps:
-      - uses: giangle-mfv/ChatGPT-CodeReview@main
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Start review
+        uses: giangle-mfv/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
