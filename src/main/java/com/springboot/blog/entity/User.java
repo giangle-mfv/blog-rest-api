@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.Set;
 
 @Setter
@@ -31,11 +32,13 @@ public class User {
 
     @Column(nullable = false)
     private String password;
-    
+
     private String address;
 
     @Column(unique = true)
     private String postalCode;
+
+    private Date birthDate;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
