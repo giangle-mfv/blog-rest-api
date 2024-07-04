@@ -30,6 +30,11 @@ public class CommentController {
         return commentService.getCommentsByPostId(postId);
     }
 
+    @GetMapping("/posts/{postId}/comments/count")
+    public int countCommentsByPostId(@PathVariable(value = "postId") Long postId){
+        return commentService.countCommentsByPostId(postId);
+    }
+
     @GetMapping("/posts/{postId}/comments/{id}")
     public ResponseEntity<CommentDto> getCommentById(@PathVariable(value = "postId") Long postId,
                                                      @PathVariable(value = "id") Long commentId){

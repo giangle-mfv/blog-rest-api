@@ -55,6 +55,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public int countCommentsByPostId(long postId) {
+        return commentRepository.findByPostId(postId).size();
+    }
+
+    @Override
     public CommentDto getCommentById(Long postId, Long commentId) {
         // retrieve post entity by id
         Post post = postRepository.findById(postId).orElseThrow(
