@@ -75,6 +75,20 @@ public class PostController {
             description = "Http Status 200 SUCCESS"
     )
     // get post by id
+    @GetMapping("/count")
+    public int countAllPost() {
+        return postService.countAllPost();
+    }
+
+    @Operation(
+            summary = "Get Post By Id REST API",
+            description = "Get Post By Id REST API is used to get single post from the database"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Http Status 200 SUCCESS"
+    )
+    // get post by id
     @GetMapping("/{id}")
     public ResponseEntity<PostDto> getPostById(@PathVariable(name = "id") long id){
         return ResponseEntity.ok(postService.getPostById(id));
@@ -128,5 +142,10 @@ public class PostController {
     public ResponseEntity<List<PostDto>> getPostsByCategory(@PathVariable("id") Long categoryId){
         List<PostDto> postDtos = postService.getPostsByCategory(categoryId);
         return ResponseEntity.ok(postDtos);
+    }
+
+    @GetMapping("/category/{id}/count")
+    public int countPostsByCategory(@PathVariable("id") Long categoryId){
+        return postService.countPostByCategory(categoryId);
     }
 }

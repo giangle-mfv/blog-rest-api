@@ -118,6 +118,16 @@ public class PostServiceImpl implements PostService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public int countAllPost() {
+        return 0;
+    }
+
+    @Override
+    public int countPostByCategory(Long categoryId) {
+        return 0;
+    }
+
     // convert Entity into DTO
     private PostDto mapToDTO(Post post){
         PostDto postDto = mapper.map(post, PostDto.class);
